@@ -1,0 +1,29 @@
+<!--update.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update music</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Update music</h1>
+    <form method="post" action="/update/<%= music. id %>">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= music.title %>">
+        <br>
+        <label for="singer">singer:</label>
+        <input type="text" id="singer" name="singer" value="<%= music.singer %>">
+        <br>
+        <label for="genre">genre:</label>
+        <input type="text" id="genre" name="genre" value="<%= music.genre %>">
+        <br>
+        <label for="release_date">release_date:</label>
+        <input type="text" id="release_date" name="release_date" value="<%= music.release_date %>">
+        <br>
+        <input type="submit" value="Update">
+    </form>
+<a href="/music/<%= music. id %>">View</a>
+<a href="/delete/<%= music. id %>">Delete</a>
+<a href="/">Back to List</a>
+</body>
+</html>

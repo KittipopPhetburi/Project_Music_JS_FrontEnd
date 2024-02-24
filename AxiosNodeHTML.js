@@ -19,7 +19,7 @@ app.use(express.static (__dirname + '/public'));
 
 app.get("/", async (req, res) => {
     try {
-        const response = await axios.get(base_url + '/musics');
+        const response = await axios.get(base_url + '/music');
         res.render("musics", { musics: response.data });
     } catch (err) {
         console.error(err);
@@ -29,7 +29,7 @@ app.get("/", async (req, res) => {
 
 app.get("/music/:id", async (req, res) => { 
     try {
-        const response = await axios.get(base_url + '/musics/' + req.params.id);
+        const response = await axios.get(base_url + '/music/' + req.params.id);
         res.render("music", { music: response.data });
     } catch (err) {
         console.error(err);
@@ -43,8 +43,8 @@ app.get("/create", (req, res) => {
 
 app.post("/create", async (req, res) => {  
     try {
-        const data={ title: req.body.title, singer: req.body.singer, genre: req.body.genre, release_date: req.body.release_date,  };
-        await axios.post(base_url + '/musics', data);
+        const data={ title: req.body.title, singer: req.body.singer, genre: req.body.genre, release_date: req.body.release_date  };
+        await axios.post(base_url + '/music', data);
         res.redirect("/");
     } catch (err) {
         console.error(err);
@@ -55,7 +55,7 @@ app.post("/create", async (req, res) => {
 app.get("/update/:id", async (req, res) => {
     try {
         const response = await axios.get(
-        base_url + '/musics/' + req.params.id);
+        base_url + '/music/' + req.params.id);
         res.render("update", { music: response.data });
     } catch (err) {
         console.error(err);
@@ -65,8 +65,11 @@ app.get("/update/:id", async (req, res) => {
 
 app.post("/update/:id", async (req, res) => {
     try {
-        const data={title: req.body.title, author: req.body.author };
-        await axios.put(base_url + '/musics/' + req.params.id, data);
+        const data={ title: req.body.title, singer: req.body.singer, genre: req.body.genre, release_date: req.body.release_date };
+        //const data={ title: req.body.title, singer: req.body.singer, genre: req.body.genre, release_date: req.body.release_date  };
+        
+        
+        await axios.put(base_url + '/music/' + req.params.id, data);
         res.redirect("/");
     } catch (err) {
         console.error(err);
@@ -76,7 +79,7 @@ app.post("/update/:id", async (req, res) => {
 
 app.get("/delete/:id", async (req, res) => {
     try {
-        await axios.delete(base_url + '/musics/' + req.params.id);
+        await axios.delete(base_url + '/music/' + req.params.id);
         res.redirect("/");
     } catch (err) {
         console.error(err);
