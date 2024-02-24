@@ -66,7 +66,7 @@ app.get("/update/:id", async (req, res) => {
 app.post("/update/:id", async (req, res) => {
     try {
         const data={ title: req.body.title, singer: req.body.singer, genre: req.body.genre, release_date: req.body.release_date };
-        //const data={ title: req.body.title, singer: req.body.singer, genre: req.body.genre, release_date: req.body.release_date  };
+      //const data={ title: req.body.title, singer: req.body.singer, genre: req.body.genre, release_date: req.body.release_date };
         
         
         await axios.put(base_url + '/music/' + req.params.id, data);

@@ -7,9 +7,9 @@
 </head>
 <body>
     <h1><%= music.title %></h1>
-    <p>Music: <%= music.singer %></p>
-    <p>Music: <%= music.genre %></p>
-    <p>Music: <%= music.release_date %></p>
+    <p>Singer: <%= music.singer %></p>
+    <p>Genre: <%= music.genre %></p>
+    <p>release_date: <%= music.release_date %></p>
     <a href="/update/<%= music.id %>">Edit</a>
     <a href="/delete/<%= music.id %>">Delete</a>
     <a href="/">Back to List</a>
