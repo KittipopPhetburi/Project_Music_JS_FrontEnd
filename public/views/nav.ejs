@@ -1,0 +1,19 @@
+<div class="head">
+    <input type="search" placeholder="ค้นหาเพลง">
+
+    <% if (Role === 'admin') { %>
+        <a href="/logout"><button> <%= User %> </button></a> 
+    <% } else if (Role === 'user') { %>
+        <a href="/logout"><button> <%= User %> </button></a> 
+    <% } else { %>
+        <div class="dropdown">
+            <button class="dropbtn">เมนู</button>
+            <div class="dropdown-content">
+                <a href="/login">ล็อกอิน</a>
+                <a href="/register">สมัคร</a>
+            </div>
+        </div>
+    <% } %>
+
+</div>
+<br>
