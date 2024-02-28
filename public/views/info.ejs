@@ -1,0 +1,24 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/info.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <center>
+        <%- include('nav.ejs', {Role: Role, User: User}) -%>
+
+        <div class="listsong">
+            <h1> ข้อมูลส่วนตัว </h1>
+            <h2> <%= users.user_id %></h2>
+            <h2> <%= users.username %></h2>
+            <h2> <%= users.password %></h2>
+            <h2> <%= users.email %></h2>
+            <a href="/">ย้อนกลับ</a>
+        </div>
+    </center>
+</body>
+</html>

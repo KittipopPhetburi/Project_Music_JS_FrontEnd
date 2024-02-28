@@ -2,8 +2,11 @@
     <input type="search" placeholder="ค้นหาเพลง">
 
     <% if (Role === 'admin') { %>
+        <a href="/info"><button> info </button></a> 
+        <a href="/admin"><button> Admin </button></a> 
         <a href="/logout"><button> <%= User %> </button></a> 
     <% } else if (Role === 'user') { %>
+        <a href="/info"><button> info </button></a> 
         <a href="/logout"><button> <%= User %> </button></a> 
     <% } else { %>
         <div class="dropdown">

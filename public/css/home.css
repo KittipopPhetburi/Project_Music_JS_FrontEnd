@@ -1,36 +1,64 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  text-align: center;
+}
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  text-align: center;
 }
 
-/* เมนูดรอปดาวน์ */
+button {
+  background-color: #3B3486;
+  color: white;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: rgb(119, 88, 165);
+}
+
+.listgenre {
+  margin-top: 20px;
+}
+
+.listgenre h1 {
+  color: #333;
+}
+
+.listgenre button {
+  background-color: #3B3486;
+}
+
+.listgenre button:hover {
+  background-color: #3B3486;
+}
+
+/* Positioning dropdown on the left side */
 .dropdown {
   position: relative;
   display: inline-block;
+  margin-right: 20px;
 }
 
-/* ปุ่มเมนูดรอปดาวน์ */
-.dropbtn {
-  background-color: #3498db;
-  color: white;
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-/* เมนูเลื่อนลงมา */
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  left: 0; /* Align to the left side */
 }
 
-/* ลิงก์ในเมนูเลื่อนลงมา */
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -38,58 +66,34 @@
   display: block;
 }
 
-/* เมื่อเม้าส์ไปวัตถุ .dropdown ให้แสดงเมนูเลื่อนลงมา */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* สไตล์สำหรับปุ่ม */
-button {
-  background-color: #4CAF50; /* สีพื้นหลัง */
-  color: white; /* สีข้อความ */
-  padding: 10px 20px; /* ขอบของปุ่ม */
-  font-size: 16px; /* ขนาดตัวอักษร */
-  border: none; /* ไม่มีเส้นขอบ */
-  cursor: pointer; /* เปลี่ยนเป็น pointer เมื่อนำเมาส์ไปชี้ */
-  border-radius: 5px; /* มุมโค้ง */
-  margin-right: 10px; /* ระยะห่างขวา */
+.listsong {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-button:hover {
-  background-color: #45a049; /* เมื่อนำเมาส์ไปชี้ */
+.listsong h1 {
+  color: #333;
+  width: 100%;
+  text-align: center;
 }
 
-/* สไตล์สำหรับส่วนหัวเว็บ */
-.listgenre, .listsong, .listsong2 {
-  margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+.listsong button {
+  background-color: #3B3486;
 }
 
-.nav {
-  margin-bottom: 50px;
+.listsong button:hover {
+  background-color: #3B3486;
 }
 
-h1, h3 {
-  color: #333; /* สีข้อความ */
-}
-
-/* สไตล์สำหรับ div ที่ใส่ปุ่มเพลง */
-.listsong, .listsong2 {
-  background-color: #f2f2f2; /* สีพื้นหลัง */
-  padding: 20px; /* ขอบของ div */
-  border-radius: 5px; /* มุมโค้ง */
-}
-
-/* สไตล์สำหรับส่วนปกเพลง */
-.listsong button, .listsong2 button {
-  background-color: #008CBA; /* สีพื้นหลัง */
-  color: white; /* สีข้อความ */
-  border: none; /* ไม่มีเส้นขอบ */
-  padding: 10px 20px; /* ขอบของปุ่ม */
-  cursor: pointer; /* เปลี่ยนเป็น pointer เมื่อนำเมาส์ไปชี้ */
-  border-radius: 5px; /* มุมโค้ง */
-  margin-right: 10px; /* ระยะห่างขวา */
-}
-
-.listsong button:hover, .listsong2 button:hover {
-  background-color: #005f6b; /* เมื่อนำเมาส์ไปชี้ */
+.listsong img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  margin: 10px;
 }
