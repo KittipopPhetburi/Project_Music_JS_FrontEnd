@@ -1,0 +1,83 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    background-color: #434245;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.listsong {
+    margin-top: 20px;
+}
+
+.boxsong {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.boxlist {
+    flex-grow: 1;
+}
+
+h3 {
+    margin: 5px 0;
+}
+
+/* Align "Add Song" button to the right */
+div > a {
+    margin-left: auto;
+}
+
+/* Style for details button */
+.boxsong a:first-child button {
+    background-color: #2196F3;
+}
+
+/* Style for delete button */
+.boxsong a:last-child button {
+    background-color: #824a8b;
+}
+
+button:hover {
+    background-color: #434245;
+}
+input {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+

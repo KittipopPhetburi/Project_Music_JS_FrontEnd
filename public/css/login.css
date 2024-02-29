@@ -37,7 +37,7 @@ body {
 }
 
 .user button {
-    background-color: #3B3486;
+    background-color: #434245;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -48,8 +48,8 @@ body {
 }
 
 .user button:hover {
-    background-color: #3B3486;
-}
+    background-color: #824a8b;
+  }
 
 .user a {
     text-decoration: none;

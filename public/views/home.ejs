@@ -10,9 +10,17 @@
 
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="../path/to/your/logo.png" alt="Logo">
+            </div>
+            <nav>
+                <%- include('nav.ejs', {Role: Role, User: User}) -%>
+            </nav>
+        </div>
+    </header>
     <center>
-        <%- include('nav.ejs', {Role: Role, User: User}) -%>
-
         <div >
             <a href="/"> <button> เพลงทั้งหมด </button></a>
         </div> 

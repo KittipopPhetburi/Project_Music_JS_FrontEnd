@@ -1,46 +1,63 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  text-align: center;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
 }
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  text-align: center;
+
+center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 button {
-  background-color: #3B3486;
+  background-color: #353735;
   color: white;
-  padding: 12px 24px;
-  font-size: 18px;
   border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
   cursor: pointer;
   border-radius: 5px;
-  margin: 5px;
 }
 
-button:hover {
-  background-color: rgb(119, 88, 165);
-}
-
-.listgenre {
+.listgenre, .listsong {
   margin-top: 20px;
 }
 
-.listgenre h1 {
+h1 {
   color: #333;
 }
 
-.listgenre button {
-  background-color: #3B3486;
+a {
+  text-decoration: none;
 }
 
-.listgenre button:hover {
-  background-color: #3B3486;
+button:hover {
+  background-color: #1c1c1c;
 }
+
+/* Style for playlist buttons */
+.listgenre button {
+  background-color: #7b409a;
+}
+
+/* Style for song buttons */
+.listsong button {
+  background-color: hsl(180, 2%, 18%);
+}
+
+/* Align menu to the right */
+nav {
+  margin-left: auto;
+}
+
+/* Add more styles as needed */
+
 
 /* Positioning dropdown on the left side */
 .dropdown {
@@ -69,31 +86,49 @@ button:hover {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-.listsong {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.listsong h1 {
-  color: #333;
-  width: 100%;
-  text-align: center;
-}
-
-.listsong button {
-  background-color: #3B3486;
-}
-
-.listsong button:hover {
-  background-color: #3B3486;
-}
-
-.listsong img {
-  width: 100px;
-  height: 100px;
+input {
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 10px;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
+  background-color: #7b409a; /* Set your desired background color */
+  color: #fff; /* Set text color */
+  padding: 10px 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+}
+
+nav {
+  display: flex;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+
