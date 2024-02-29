@@ -1,5 +1,5 @@
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Noto Sans Thai", sans-serif;
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
@@ -12,6 +12,7 @@ center {
 }
 
 button {
+    font-family: "Noto Sans Thai", sans-serif;
     background-color: #434245;
     color: white;
     border: none;
@@ -80,4 +81,16 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+header {
+    background-color: #7b409a; /* Set your desired background color */
+    color: #fff; /* Set text color */
+    padding: 1px 0;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+
 
