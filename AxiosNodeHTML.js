@@ -424,6 +424,20 @@ app.post("/resetpass2", async (req,res) => {
     }
 })
 
+app.get("/review",(req,res) => {
+    try{
+        
+    }
+    catch{
+        console.error(err);
+        res.status(500).send('Error logout');
+    }
+})
+
+
+
+
+
 app.get("/logout", (req,res) => {
     try {
         res.clearCookie('role');
