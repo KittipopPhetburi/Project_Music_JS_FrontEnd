@@ -4,6 +4,7 @@ const axios = require('axios');
 const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const session = require("express-session");
 const multer = require('multer');
 
 // Base URL for the API
@@ -15,6 +16,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname,'/public/views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({secret:"mysession",resave:false,saveUninitialized:true}));
 
 // Serve static files
 app.use(express.static (__dirname + '/public'));
@@ -277,10 +279,12 @@ app.get("/playlist_hit", async (req, res) => {
 app.get("/music_detail/:id", async (req, res) => {
     try {
         const response = await axios.get(base_url + '/music/' + req.params.id); //เข้าถึงDB music และเข้าถึง id
-        return res.render("music_detail", { muscis_detail: response.data, Role: req.cookies.role, User: req.cookies.username }); // ส่งค่าไปหน้า playlist_hit ใน {} ซ้าย เป็นตัวแปรและเก็บค่า data
+        const response2 = await axios.get(base_url + "/getallcomment");
+        // console.log(response2.data);
+        return res.render("music_detail", { musics_detail: response.data, Role: req.cookies.role, User: req.cookies.username }); // ส่งค่าไปหน้า playlist_hit ใน {} ซ้าย เป็นตัวแปรและเก็บค่า data
     } catch (err) {
         console.error(err);
-        res.status(500).send('Error music_detail');
+        res.status(500).send('Error music_detail id');
     }
 });
 
@@ -304,8 +308,10 @@ app.post("/login2", async (req,res) => { //check login
                 if (req.body.password === user.password) {
                     checkFail = false;
                     if (user.role === 'admin') {
+                        req.session.userloginid = user.user_id;
                         res.cookie('role', 'admin', {maxAge: 9000000, httpOnly: true}); // อยู่ใน web ได้ 15 นาที || 900k ms
                     } else if (user.role === 'user') {
+                        req.session.userloginid = user.user_id;
                         res.cookie('role', 'user', {maxAge: 9000000, httpOnly: true});
                     } 
                     res.cookie('username', user.username, {maxAge: 9000000, httpOnly: true});
@@ -422,7 +428,17 @@ app.post("/resetpass2", async (req,res) => {
         console.error(err);
         res.status(500).send('Error resetpass2');
     }
-})
+});
+
+app.post("/review", async (req,res) => {
+    const data = {
+        music_id:req.body.musicid,
+        user_id:req.session.userloginid,
+        score:req.body.score,
+        comment:req.body.comment
+    }
+    const response = await axios.post(base_url + "/createreview",data);
+});
 
 app.get("/logout", (req,res) => {
     try {

@@ -107,6 +107,18 @@ center {
     text-align: center;
 }
 
+.show-comment {
+  margin-top: 20px;
+  height: 300px; 
+  width: 300px; 
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.review{
+
+}
+
 img {
     width: 100px;
     height: 100px;

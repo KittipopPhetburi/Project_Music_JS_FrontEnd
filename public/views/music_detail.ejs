@@ -18,8 +18,6 @@
         </div>
     </header>
     <center>
-        
-
         <div >
             <a href="/"> <button> เพลงทั้งหมด </button></a>
         </div>
@@ -31,15 +29,47 @@
             <a href="/playlist_modern"> <button> เพลงสากล </button> </a>
             <a href="/playlist_hit"> <button> เพลงฮิต </button> </a>
         </div>
-
-        <div class="listsong">
-            <img src="../Pictures/<%= muscis_detail.musicImg %>" style="width: 100px; height: 100px;">
-            <h1> ชื่อเพลง : <%= muscis_detail.title %> </h1>
-            <h1> ศิลปิน : <%= muscis_detail.singer %> </h1>
-            <h1> แนวเพลง : <%= muscis_detail.genre %> </h1>
-            <h1> วันที่ออกเพลง : <%= muscis_detail.release_date %> </h1>
-            <a href="/" onclick="_black"> ย้อนกลับ </a>
-        </div>
+        <div class="d" style="display: flex; gap: 50px;">
+            <div class="listsong">
+                <img src="../Pictures/<%= muscis_detail.musicImg %>" style="width: 100px; height: 100px;">
+                
+                <h1> ชื่อเพลง : <%= muscis_detail.title %> </h1>
+                <h1> ศิลปิน : <%= muscis_detail.singer %> </h1>
+                <h1> แนวเพลง : <%= muscis_detail.genre %> </h1>
+                <h1> วันที่ออกเพลง : <%= muscis_detail.release_date %> </h1>
+                <a href="/" onclick="_black"> ย้อนกลับ </a>
+            </div>
+            <div>
+                <div class="show-comment" style="padding: 10px;">  
+                    <h1>คอมเม้น </h1>
+                    <div class="comment" style="text-align: start; height: auto; width: 100%; border: 1px solid red;">
+                        <p>Name: </p>
+                        <p>Lorem ipsum dolor sit.</p>
+                    </div>
+                </div>
+                <div class="review">
+                    <form action="/review" method="post">
+                        <input type="text" hidden value=<%= muscis_detail.id %> name="musicid">
+                        <p>ให้คะแนน</p>
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <p style="margin-left: 2px;">1</p>
+                            <input style="margin-right: 10px;" type="radio" value="1" name="score">
+                            <p style="margin-left: 2px;">2</p>
+                            <input style="margin-right: 10px;" type="radio" value="2" name="score">
+                            <p style="margin-left: 2px;">3</p>
+                            <input style="margin-right: 10px;" type="radio" value="3" name="score">
+                            <p style="margin-left: 2px;">4</p>
+                            <input style="margin-right: 10px;" type="radio" value="4" name="score">
+                            <p style="margin-left: 2px;">5</p>
+                            <input style="margin-right: 10px;" type="radio" value="5" name="score">
+                        </div>
+                        <h2> แสดงความคิดเห็น </h2>
+                        <input type ="text" name="comment"  style="width: 350px; height: 30px;" required ><br>
+                        <input type="submit" value="ยืนยัน">
+                    </form>
+                </div>
+            </div>
+        </div>  
     </center>
 </body>
 </html>

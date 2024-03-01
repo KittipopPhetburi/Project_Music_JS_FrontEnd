@@ -13,19 +13,16 @@
         <div class="container">
             <div class="logo">
                 <img src="Pictures/logo.png" alt="">
-            </div>
+            </auto;
         </div>
     </header>
-    <center>
-
-        <div class="listsong">
-            <h1> ข้อมูลส่วนตัว </h1>
-            <h2> <%= users.user_id %></h2>
-            <h2> <%= users.username %></h2>
-            <h2> <%= users.password %></h2>
-            <h2> <%= users.email %></h2>
+         <div class="listsong">
+            <center><h1> ข้อมูลส่วนตัว </h1></center>
+            <h2> ID: <%= users.user_id %></h2>
+            <h2> ชื่อผู้ใช้: <%= users.username %></h2>
+            <h2> รหัสผ่าน: <%= users.password %></h2>
+            <h2> อีเมล: <%= users.email %></h2>
             <a href="/">ย้อนกลับ</a>
         </div>
-    </center>
 </body>
 </html>
