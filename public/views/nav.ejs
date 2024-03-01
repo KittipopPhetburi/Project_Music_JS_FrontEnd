@@ -1,11 +1,12 @@
 <div class="head">
-    <input type="search" placeholder="ค้นหาเพลง">
+    <input type="search" placeholder="ค้นหาเพลง" >
     <% if (Role === 'admin') { %>
         <a href="/info"><button> ข้อมูลส่วนตัว </button></a> 
-        <a href="/admin"><button> Admin </button></a> 
+        <a href="/admin"><button> Admin Function </button></a> 
         <a href="/logout"><button> Log out </button></a> 
     <% } else if (Role === 'user') { %>
         <a href="/info"><button> ข้อมูลส่วนตัว </button></a> 
+        <button> <%= User %> </button>
         <a href="/logout"><button> Log out </button></a> 
     <% } else { %>
         <div class="dropdown">

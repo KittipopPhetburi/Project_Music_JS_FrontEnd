@@ -281,7 +281,7 @@ app.get("/music_detail/:id", async (req, res) => {
         const response = await axios.get(base_url + '/music/' + req.params.id); //เข้าถึงDB music และเข้าถึง id
         const response2 = await axios.get(base_url + "/getallcomment");
         // console.log(response2.data);
-        return res.render("music_detail", { musics_detail: response.data, Role: req.cookies.role, User: req.cookies.username }); // ส่งค่าไปหน้า playlist_hit ใน {} ซ้าย เป็นตัวแปรและเก็บค่า data
+        return res.render("music_detail", { muscis_detail: response.data, Role: req.cookies.role, User: req.cookies.username }); // ส่งค่าไปหน้า playlist_hit ใน {} ซ้าย เป็นตัวแปรและเก็บค่า data
     } catch (err) {
         console.error(err);
         res.status(500).send('Error music_detail id');
@@ -439,6 +439,20 @@ app.post("/review", async (req,res) => {
     }
     const response = await axios.post(base_url + "/createreview",data);
 });
+
+app.get("/review",(req,res) => {
+    try{
+        
+    }
+    catch{
+        console.error(err);
+        res.status(500).send('Error logout');
+    }
+})
+
+
+
+
 
 app.get("/logout", (req,res) => {
     try {
