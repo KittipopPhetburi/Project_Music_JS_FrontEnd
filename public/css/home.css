@@ -78,13 +78,6 @@ button:hover {
   background-color: hsl(102, 35%, 26%);
 }
 
-/* Align menu to the right */
-nav {
-  margin-left: auto;
-  width: 80%;
-}
-
-
 input {
   font-family: "Noto Sans Thai", sans-serif;
   width: 60%;
@@ -101,12 +94,6 @@ body {
   font-family: "Noto Sans Thai", sans-serif;
 }
 
-header {
-  background-color: #7b409a; /* Set your desired background color */
-  color: #fff; /* Set text color */
-  padding: 10px 0;
-}
-
 .container {
   width: 90%;
   margin: 0 auto;
@@ -120,15 +107,38 @@ header {
   height: auto;
 }
 
-.head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header {
+  background-color: #7b409a; /* Set your desired background color */
+  color: #fff; /* Set text color */
+  padding: 10px 0;
+}
+
+
+/* ชิดขวาเมื่อไม่มี serch  */
+nav {
+  margin-left: auto;
+  width: 80%;
+  width: 500px;
+} .dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  width: 80%;
+  width: 180px;
+} .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  z-index: 1;
+  width: 85%;
+  text-align: center;
 }
 
 .nav-buttons {
   display: flex;
   align-items: center;
+  right: 5px;
 }
 
 .nav-buttons button {
@@ -138,21 +148,6 @@ header {
 
 .nav-buttons button:hover {
   background-color: #7b409a;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 120px;
-  z-index: 1;
-  width: 100%;
-  text-align: center;
 }
 
 .dropdown-content a {
