@@ -68,7 +68,7 @@
                 <hr>
                 <% reviews.forEach(comment => { %>
                     <div class="comment">
-                        <p>คุณ <font color="red"><%= comment.username %></font>  บอกว่า : <%= comment.comment %></p>
+                        <p>คุณ <font color="red"><%= comment.username %> ให้คะแนน <%= comment.score %> <img src="star.jpg" alt=""> </font>  บอกว่า : <%= comment.comment %></p>
                     </div>
                 <% }); %>
             </div>
