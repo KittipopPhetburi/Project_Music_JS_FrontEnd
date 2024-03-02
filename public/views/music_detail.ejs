@@ -58,7 +58,7 @@
                         <input style="margin-right: 10px;" type="radio" value="5" name="score">
                     </div>
                     <h2> แสดงความคิดเห็น </h2>
-                    <textarea cols="50" rows="10" name="comment" required></textarea><br>
+                    <textarea cols="50" rows="10" name="comment" ></textarea><br>
                     <button type="submit"> ส่ง </button>
                 </form>
             </div>
@@ -68,7 +68,8 @@
                 <hr>
                 <% reviews.forEach(comment => { %>
                     <div class="comment">
-                        <p>คุณ <font color="red"><%= comment.username %> ให้คะแนน <%= comment.score %> <img src="star.jpg" alt=""> </font>  บอกว่า : <%= comment.comment %></p>
+                        <p>คุณ <font color="red"><%= comment.username %> </font> ให้คะแนน <%= comment.score %> <img src="../Pictures/star.jpg" width="15">  <br>
+                            <% if(comment.comment != ""){%>บอกว่า : <%= comment.comment %><% }%></p> 
                     </div>
                 <% }); %>
             </div>
