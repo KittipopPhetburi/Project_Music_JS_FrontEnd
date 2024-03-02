@@ -9,7 +9,7 @@ const multer = require('multer');
 
 // Base URL for the API
 //const base_url = "https://api.example.com";
-const base_url = "http://localhost:3000";
+const base_url = "http://node59665-musicbackend.proen.app.ruk-com.cloud";
 
 // Set the template engine
 app.set('view engine', 'ejs');
