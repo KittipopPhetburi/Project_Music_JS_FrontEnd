@@ -37,7 +37,22 @@ const ms = multer({storage: music});
 app.get("/", async (req, res) => {
     try {
         const response = await axios.get(base_url + '/music'); //เข้าถึงDB music
-        return res.render("home", { musics: response.data, Role: req.cookies.role, User: req.cookies.username});
+        if (req.cookies.id) {
+            const response2 = await axios.get(base_url + "/playlist");
+            const playlists = response2.data;
+            let pl = [];
+            for (let pls of playlists) {
+                if (pls.user_id == req.cookies.id) {
+                    const response2 = await axios.get(base_url + "/playlist/" + pls.playlist_id);
+                    const data = response2.data;
+                    pl.push(data);
+                }
+            }
+            return res.render("home", { musics: response.data, pl: pl, 
+                Role: req.cookies.role, User: req.cookies.username});
+        } else {
+            return res.render("home", { musics: response.data, pl: [], Role: req.cookies.role, User: req.cookies.username});
+        }
     } catch (err) {
         console.error(err);
         res.status(500).send('Error /');
@@ -180,7 +195,7 @@ app.get("/music_delete_admin/:id", async (req, res) => {
         if (req.cookies.role === 'admin') {
             await axios.delete(base_url + "/music/" + req.params.id)
             const response = await axios.get(base_url + "/music");
-            return res.render("admin", {  musics: response.data, Role: req.cookies.role, User: req.cookies.username }); // ส่งค่าไปหน้า playlist_hit ใน {} ซ้าย เป็นตัวแปรและเก็บค่า data
+            return res.redirect("/admin");
         } else if (req.cookies.role === 'user') {
             return res.redirect("/");
         } else {
@@ -279,12 +294,142 @@ app.get("/playlist_hit", async (req, res) => {
 app.get("/music_detail/:id", async (req, res) => {
     try {
         const response = await axios.get(base_url + '/music/' + req.params.id); //เข้าถึงDB music และเข้าถึง id
-        const response2 = await axios.get(base_url + "/getallcomment");
-        // console.log(response2.data);
-        return res.render("music_detail", { muscis_detail: response.data, Role: req.cookies.role, User: req.cookies.username }); // ส่งค่าไปหน้า playlist_hit ใน {} ซ้าย เป็นตัวแปรและเก็บค่า data
+        const response2 = await axios.get(base_url + "/getcomment/" + req.params.id);
+        return res.render("music_detail", { musicid: req.body.musicid, reviews: response2.data, muscis_detail: response.data, 
+            Role: req.cookies.role, User: req.cookies.username }); // ส่งค่าไปหน้า playlist_hit ใน {} ซ้าย เป็นตัวแปรและเก็บค่า data
     } catch (err) {
         console.error(err);
         res.status(500).send('Error music_detail id');
+    }
+});
+
+app.post("/review", async (req,res) => {
+    try {
+        const data = {
+            music_id:req.body.musicid,
+            user_id:req.cookies.id,
+            score:req.body.score,
+            comment:req.body.comment
+        }
+        await axios.post(base_url + "/createreview", data);
+        
+        return res.redirect("/music_detail/" + req.body.musicid);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error review');
+    }
+});
+
+app.get("/playlist_create", async (req,res) => {
+    try {
+        if (req.cookies.role) {
+            return res.render("playlist_create", { Role: req.cookies.role, User: req.cookies.username });
+        } else {
+            return res.redirect("/");
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error review');
+    }
+});
+
+app.post("/createPlaylist", async (req,res) => {
+    try {
+        const response = await axios.get(base_url + "/playlist");
+        const pl = response.data;
+
+        for (let pls of pl) {
+            if (pls.playlistname == req.body.name) {
+                return res.redirect("/");
+            }
+        }
+
+        const data = {
+            playlistname: req.body.name,
+            user_id: req.cookies.id
+        }
+        await axios.post(base_url + "/playlist", data);
+        return res.redirect("/");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error createPlaylist');
+    }
+});
+
+app.get("/playlist_add/:id", async (req,res) => {
+    try {
+        const response2 = await axios.get(base_url + "/playlist");
+        const playlists = response2.data;
+        let pl = [];
+        for (let pls of playlists) {
+            if (pls.user_id == req.cookies.id) {
+                const response2 = await axios.get(base_url + "/playlist/" + pls.playlist_id);
+                const data = response2.data;
+                pl.push(data);
+            }
+        }
+        if (pl.length > 0) {
+            return res.render("playlist_add", { musicid: req.params.id, pl: pl, 
+                Role: req.cookies.role, User: req.cookies.username});
+        } else {
+            return res.redirect("/");
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error playlist_add');
+    }
+});
+
+app.post("/addPL/:id", async (req,res) => {
+    try {
+        const response = await axios.get(base_url + "/music/" + req.params.id);
+        const music = response.data;
+
+        const data = {
+            playlistname: req.body.plname,
+            music_id: req.params.id,
+            title: music.title,
+            singer: music.singer,
+            user_id: req.cookies.id
+        }
+        await axios.post(base_url + "/playlist", data);
+
+        return res.redirect("/");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error addPL');
+    }
+});
+
+app.get("/playlist_detail/:name", async (req,res) => {
+    try {
+        const response = await axios.get(base_url + "/playlist");
+        const playlist = response.data;
+        let pl = [];
+        for (let pls of playlist) {
+            if (pls.playlistname == req.params.name) {
+                const response1 = await axios.get(base_url + "/playlist/" + pls.playlist_id);
+                const data = response1.data;
+                pl.push(data);
+            }
+        }
+
+        const response2 = await axios.get(base_url + "/music");
+        const musics = response2.data;
+        let data = [];
+        for (let ms of musics) {
+            for (let pls of pl) {
+                if (ms.id == pls.music_id) {
+                    const response1 = await axios.get(base_url + "/music/" + ms.id);
+                    const dt = response1.data;
+                    data.push(dt);
+                }
+            }
+        }
+
+        return res.render("playlist_detail", { musics: data, Role: req.cookies.role, User: req.cookies.username });
+    } catch (err) {
+        return res.redirect("/");
     }
 });
 
@@ -315,6 +460,7 @@ app.post("/login2", async (req,res) => { //check login
                         res.cookie('role', 'user', {maxAge: 9000000, httpOnly: true});
                     } 
                     res.cookie('username', user.username, {maxAge: 9000000, httpOnly: true});
+                    res.cookie('id', user.user_id, {maxAge: 9000000, httpOnly: true});
                     return res.redirect("/");
                 }
             } 
@@ -415,7 +561,11 @@ app.post("/resetpass2", async (req,res) => {
             for (let user of users){
                 if(req.cookies.resetpass === user.username){
                     const data = {
-                        password: req.body.new_password
+                        username: user.username,
+                        password: req.body.new_password,
+                        email: user.email,
+                        age: user.age,
+                        role: user.role
                     }
                     await axios.put(base_url + "/user/" +  user.user_id, data);
                     res.clearCookie('resetpass');
@@ -430,49 +580,16 @@ app.post("/resetpass2", async (req,res) => {
     }
 });
 
-app.post("/review", async (req,res) => {
-    const data = {
-        music_id:req.body.musicid,
-        user_id:req.session.userloginid,
-        score:req.body.score,
-        comment:req.body.comment
-    }
-    const response = await axios.post(base_url + "/createreview",data);
-});
-
-app.get("/review",(req,res) => {
-    try{
-        
-    }
-    catch{
-        console.error(err);
-        res.status(500).send('Error logout');
-    }
-})
-
-
-
-
-
 app.get("/logout", (req,res) => {
     try {
         res.clearCookie('role');
         res.clearCookie('username');
+        res.clearCookie('id');
         return res.redirect("/");
     } catch (err) {
         console.error(err);
         res.status(500).send('Error logout');
     }
 })
-
-// app.get("/info/:id", async (req, res) => {
-//     try {
-//         const response = await axios.get(base_url + '/music/' + req.params.id); //เข้าถึงDB music และเข้าถึง id
-//         return res.render("info", { info: response.data }); // ส่งค่าไปหน้า playlist_hit ใน {} ซ้าย เป็นตัวแปรและเก็บค่า data
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).send('Error info');
-//     }
-// });
 
 app.listen(5500, () => console.log('Server started on port http://localhost:5500'));

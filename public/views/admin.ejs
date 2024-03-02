@@ -14,28 +14,27 @@
             <div class="logo">
                 <img src="Pictures/logo.png" alt="">
             </div>
-            
+            <nav>
+                <%- include('nav.ejs', {Role: Role, User: User}) -%>
+            </nav>
         </div>
     </header>
     <center>
-        <center>
-            <%- include('nav.ejs', {Role: Role, User: User}) -%>
-        </center>
 
         <div >
-            <a href="/music_add_admin"> <button> เพิ่มเพลง </button></a>
+            <a href="/music_add_admin"> <button class="addmusic"> เพิ่มเพลง </button></a>
         </div> 
 
         <div class="listsong">
             <% for (let i = 0; i < musics.length; i++) { %>
                 <div class="boxsong">
-                    <img src="../Pictures/<%= musics[i].musicImg %>" style="width: 100px; height: 100px;">
+                    <img src="../Pictures/<%= musics[i].musicImg %>">
                     <div class="boxlist">
                         <h3> <%= musics[i].title %> </h3>
                         <h3> <%= musics[i].singer %> </h3>
                     </div>
-                    <a href="/music_detail_admin/<%= musics[i].id %>"> <button> รายละเอียด </button> </a>
-                    <a href="/music_delete_admin/<%= musics[i].id %>"> <button> ลบ </button> </a>
+                    <a href="/music_detail_admin/<%= musics[i].id %>"> <button class="detail"> รายละเอียด </button> </a>
+                    <a href="/music_delete_admin/<%= musics[i].id %>"> <button class="delete"> ลบ </button> </a>
                 </div>
             <% } %>
         </div>

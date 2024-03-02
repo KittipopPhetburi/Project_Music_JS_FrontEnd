@@ -22,6 +22,7 @@
     </header>
     <center>
         <div class="listgenre">
+            <h1> แนวเพลง </h1>
             <a href="/playlist_sad"> <button> เพลงเศร้า </button> </a>
             <a href="/playlist_love"> <button> เพลงรัก </button> </a>
             <a href="/playlist_modern"> <button> เพลงสากล </button> </a>
@@ -31,8 +32,21 @@
         <div class="listsong">
             <h1> เพลงทั้งหมด </h1>
             <% for (let i = 0; i < musics.length; i++) { %>
-                <a href="/music_detail/<%= musics[i].id %>"> <button> <img src="../Pictures/<%= musics[i].musicImg %>" style="width: 100px; height: 100px;"> </button> </a>
+                <a href="/music_detail/<%= musics[i].id %>"> <button> <img src="../Pictures/<%= musics[i].musicImg %>"> </button> </a>
             <% } %>
+        </div>
+
+        <div class="playlist">
+            <h1> เพลส์ลิสของฉัน </h1>
+            <a href="/playlist_create"> <button class="add"> สร้าง </button> </a>
+            <% 
+                let ch = [];
+                for (let i = 0; i < pl.length; i++) { 
+                    if (!ch.includes(pl[i].playlistname)) {
+                        ch.push(pl[i].playlistname);
+            %>
+                <a href="/playlist_detail/<%= pl[i].playlistname %>"> <button class="pl"> <%= pl[i].playlistname %> </button>  </a>
+            <% } } %>
         </div>
     </center>
 </body>

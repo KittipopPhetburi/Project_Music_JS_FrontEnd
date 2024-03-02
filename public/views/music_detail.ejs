@@ -11,26 +11,25 @@
 </head>
 <body>
     <header>
-        <br>
-            <center>
-            <%- include('nav.ejs', {Role: Role, User: User}) -%>
-        </center>
+        <div class="container">
+            <div class="logo">
+                <img src="../Pictures/logo.png" alt="">
+            </div>
+            <nav>
+                <%- include('nav.ejs', {Role: Role, User: User}) -%>
+            </nav>
         </div>
     </header>
     <center>
-        <div >
-            <a href="/"> <button> เพลงทั้งหมด </button></a>
-        </div>
-
         <div class="listgenre">
-            <h1> เพลส์ลิสเพลง </h1>
+            <h1> แนวเพลง </h1>
             <a href="/playlist_sad"> <button> เพลงเศร้า </button> </a>
             <a href="/playlist_love"> <button> เพลงรัก </button> </a>
             <a href="/playlist_modern"> <button> เพลงสากล </button> </a>
             <a href="/playlist_hit"> <button> เพลงฮิต </button> </a>
 
         </div>
-        <div class="d" style="display: flex; gap: 50px;">
+
             <div class="listsong">
                 <img src="../Pictures/<%= muscis_detail.musicImg %>" style="width: 100px; height: 100px;">
                 
@@ -38,40 +37,41 @@
                 <h1> ศิลปิน : <%= muscis_detail.singer %> </h1>
                 <h1> แนวเพลง : <%= muscis_detail.genre %> </h1>
                 <h1> วันที่ออกเพลง : <%= muscis_detail.release_date %> </h1>
-                <a href="/" onclick="_black"> ย้อนกลับ </a>
+                <a href="/" onclick="_black"> <button> ย้อนกลับ </button> </a>
+                <a href="/playlist_add/<%= muscis_detail.id %>"> <button> เพิ่มลงในเพลย์ลิส </button> </a>
             </div>
-            <div>
-                <div class="show-comment" style="padding: 10px;">  
-                    <h1>คอมเม้น </h1>
-                    <div class="comment" style="text-align: start; height: auto; width: 100%; border: 1px solid red;">
-                        <p>Name: </p>
-                        <p>Lorem ipsum dolor sit.</p>
-                    </div>
-                </div>
-                <div class="review">
-                    <form action="/review" method="post">
-                        <input type="text" hidden value=<%= muscis_detail.id %> name="musicid">
-                        <p>ให้คะแนน</p>
-                        <div style="display: flex;justify-content: center;align-items: center;">
-                            <p style="margin-left: 2px;">1</p>
-                            <input style="margin-right: 10px;" type="radio" value="1" name="score">
-                            <p style="margin-left: 2px;">2</p>
-                            <input style="margin-right: 10px;" type="radio" value="2" name="score">
-                            <p style="margin-left: 2px;">3</p>
-                            <input style="margin-right: 10px;" type="radio" value="3" name="score">
-                            <p style="margin-left: 2px;">4</p>
-                            <input style="margin-right: 10px;" type="radio" value="4" name="score">
-                            <p style="margin-left: 2px;">5</p>
-                            <input style="margin-right: 10px;" type="radio" value="5" name="score">
-                        </div>
-                        <h2> แสดงความคิดเห็น </h2>
-                        <input type ="text" name="comment"  style="width: 350px; height: 30px;" required ><br>
-                        <input type="submit" value="ยืนยัน">
-                    </form>
-                </div>
-            </div>
-        </div>  
 
+            <div class="review">
+                <form action="/review" method="post">
+                    <input type="hidden" value="<%= muscis_detail.id %>" name="musicid">
+                    <p>ให้คะแนน</p>
+                    <div class="score">
+                        <p>1</p>
+                        <input style="margin-right: 10px;" type="radio" value="1" name="score">
+                        <p>2</p>
+                        <input style="margin-right: 10px;" type="radio" value="2" name="score">
+                        <p>3</p>
+                        <input style="margin-right: 10px;" type="radio" value="3" name="score">
+                        <p>4</p>
+                        <input style="margin-right: 10px;" type="radio" value="4" name="score">
+                        <p>5</p>
+                        <input style="margin-right: 10px;" type="radio" value="5" name="score">
+                    </div>
+                    <h2> แสดงความคิดเห็น </h2>
+                    <textarea cols="50" rows="10" name="comment" required></textarea><br>
+                    <button type="submit"> ส่ง </button>
+                </form>
+            </div>
+
+            <div class="cm">
+                <p> Comment </p>
+                <hr>
+                <% reviews.forEach(comment => { %>
+                    <div class="comment">
+                        <p>คุณ <font color="red"><%= comment.username %></font>  บอกว่า : <%= comment.comment %></p>
+                    </div>
+                <% }); %>
+            </div>
     </center>
 </body>
 </html>

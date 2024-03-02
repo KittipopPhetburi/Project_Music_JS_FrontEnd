@@ -11,11 +11,15 @@
 </head>
 <body>
     <header>
-        <br>
-            <center>
+        <div class="container">
+            <div class="logo">
+                <img src="../Pictures/logo.png" alt="">
+            </div>
+            <nav>
                 <%- include('nav.ejs', {Role: Role, User: User}) -%>
-            </center>
-    </header><br>
+            </nav>
+        </div>
+    </header>
     <center>
 
         <form action="/editMusic/<%= music.id %>" method="post" enctype="multipart/form-data">

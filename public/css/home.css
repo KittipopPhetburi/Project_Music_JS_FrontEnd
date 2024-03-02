@@ -49,46 +49,42 @@ button:hover {
   background-color: #7b409a;
 }
 
+.listgenre button:hover {
+  font-family: "Noto Sans Thai", sans-serif;
+  background-color: #552c6b;
+}
+
 /* Style for song buttons */
 .listsong button {
   background-color: hsl(180, 2%, 18%);
 }
 
+.listsong button:hover {
+  font-family: "Noto Sans Thai", sans-serif;
+  background-color: #565656;
+}
+
+.listsong img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover; 
+}
+
+.playlist button {
+  background-color: hsl(102, 31%, 39%);
+}
+
+.playlist button:hover {
+  background-color: hsl(102, 35%, 26%);
+}
+
 /* Align menu to the right */
 nav {
   margin-left: auto;
+  width: 80%;
 }
 
-/* Add more styles as needed */
 
-
-/* Positioning dropdown on the left side */
-.dropdown {
-  position: relative;
-  display: inline-block;
-  margin-right: 20px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  left: 0; /* Align to the left side */
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 input {
   font-family: "Noto Sans Thai", sans-serif;
   width: 60%;
@@ -124,16 +120,81 @@ header {
   height: auto;
 }
 
-nav {
+.head {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-nav a {
-  color: #fff;
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-buttons button {
+  margin: 5px;
+  width: 140px;
+}
+
+.nav-buttons button:hover {
+  background-color: #7b409a;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
   text-decoration: none;
-  margin-left: 20px;
-  font-size: 16px;
+  display: block;
 }
 
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
 
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background-color: #1c1c1c;
+}
+
+.dropdown .dropbtn:hover {
+  background-color: #000000;
+}
+
+.head input[type='search'] {
+  width: 100%;
+  margin-right: 20px;
+  margin-top: 15px;
+}
+
+.playlist .pl {
+  background-color: #405d9a;
+}
+
+.playlist .pl:hover {
+  background-color: #2e426e;
+}
 

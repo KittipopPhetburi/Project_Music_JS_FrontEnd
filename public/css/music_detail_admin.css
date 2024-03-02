@@ -12,7 +12,6 @@ center {
 }
 
 button {
-  font-family: "Noto Sans Thai", sans-serif;
   background-color: #353735;
   color: white;
   border: none;
@@ -24,6 +23,7 @@ button {
   margin: 10px;
   cursor: pointer;
   border-radius: 5px;
+  font-family: "Noto Sans Thai", sans-serif;
 }
 
 .listgenre, .listsong {
@@ -45,33 +45,123 @@ button:hover {
 
 /* Style for playlist buttons */
 .listgenre button {
-  background-color: #2d2c2d;
+  font-family: "Noto Sans Thai", sans-serif;
+  background-color: #7b409a;
+}
+
+.listgenre button:hover {
+  font-family: "Noto Sans Thai", sans-serif;
+  background-color: #552c6b;
+}
+
+.listsong {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 50%;
 }
 
 /* Style for song buttons */
 .listsong button {
-  background-color: #2d2c2d;
+  background-color: hsl(180, 2%, 18%);
+}
+
+.listsong button:hover {
+  font-family: "Noto Sans Thai", sans-serif;
+  background-color: #565656;
+}
+
+.listsong img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover; 
+}
+
+.playlist button {
+  background-color: hsl(102, 31%, 39%);
+}
+
+.playlist button:hover {
+  background-color: hsl(102, 35%, 26%);
 }
 
 /* Align menu to the right */
 nav {
   margin-left: auto;
+  width: 80%;
+}
+
+
+input {
+  font-family: "Noto Sans Thai", sans-serif;
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans Thai", sans-serif;
+}
+
+header {
+  background-color: #7b409a; /* Set your desired background color */
+  color: #fff; /* Set text color */
+  padding: 10px 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  width: 100px;
+  height: auto;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-buttons button {
+  margin: 5px;
+  width: 140px;
+}
+
+.nav-buttons button:hover {
+  background-color: #7b409a;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
-  margin-right: 20px;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
   z-index: 1;
-  left: 0; /* Align to the left side */
+  width: 100%;
+  text-align: center;
 }
 
 .dropdown-content a {
@@ -81,59 +171,30 @@ nav {
   display: block;
 }
 
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background-color: #1c1c1c;
 }
 
-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.dropdown .dropbtn:hover {
+  background-color: #000000;
 }
 
-.listsong {
-  margin-top: 20px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.head input[type='search'] {
+  width: 100%;
+  margin-right: 20px;
+  margin-top: 15px;
 }
-
-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
-}
-
-h1 {
-  margin-top: 10px;
-  color: #333;
-}
-
-
-button:hover {
-  background-color: #7245a0;
-}
-
-a {
-  text-decoration: none;
-  color: #934caf;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-header {
-  background-color: #7b409a; /* Set your desired background color */
-  color: #fff; /* Set text color */
-  padding: 10px 0;
-}
-
-

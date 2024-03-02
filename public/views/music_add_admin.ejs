@@ -15,14 +15,13 @@
             <div class="logo">
                 <img src="Pictures/logo.png" alt="">
             </div>
-            <center>
-            <%- include('nav.ejs', {Role: Role, User: User}) -%>
-        </center>
+            <nav>
+                <%- include('nav.ejs', {Role: Role, User: User}) -%>
+            </nav>
         </div>
     </header>
+    
     <center>
-
-
         <form action="/createMusic" method="post" enctype="multipart/form-data">
             <div class="listsong">
                 <h1> เพิ่มเพลง </h1>
